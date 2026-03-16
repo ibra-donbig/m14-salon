@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>صالون M-14 للشعر والتجميل | قائمة الأسعار</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:       #6b21a8;
+      --purple-mid:   #7c3aed;
+      --purple-light: #ede9fe;
+      --purple-pale:  #f5f3ff;
+      --dark:         #1e1b4b;
+      --text:         #374151;
+      --text-light:   #6b7280;
+      --white:        #ffffff;
+      --border:       #e5e7eb;
+      --marble:       #f8f8f8;
+      --radius:       10px;
+      --shadow:       0 2px 12px rgba(107,33,168,.12);
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--marble);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== TOP NAV ===== */
+    .top-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--purple);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-brand img {
+      height: 42px;
+      width: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: .9rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: var(--purple-light);
+      color: var(--purple);
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .top-nav { padding: 0 16px; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--white);
+      text-align: center;
+      padding: 40px 20px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin: 0 auto 16px;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(107,33,168,.2));
+    }
+    .hero h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .hero p {
+      color: var(--text-light);
+      font-size: .95rem;
+      margin-top: 6px;
+    }
+    .hero-divider {
+      width: 50px;
+      height: 3px;
+      background: var(--purple);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .page-wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    .section-title-bar {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section-title-bar::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--purple);
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ===== SEARCH ===== */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 11px 44px 11px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .95rem;
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s;
+      direction: rtl;
+    }
+    .search-wrap input:focus { border-color: var(--purple); }
+    .search-wrap .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    /* ===== ACCORDION ===== */
+    .accordion { display: flex; flex-direction: column; gap: 8px; }
+
+    .acc-item { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+
+    .acc-header {
+      background: #7b2d8b;
+      color: var(--white);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: background .2s;
+    }
+    .acc-header:hover { background: #6b1f7a; }
+    .acc-header.open { background: #5a1668; }
+    .acc-toggle {
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+    .acc-header.open .acc-toggle { transform: rotate(45deg); }
+
+    .acc-body {
+      background: var(--white);
+      display: none;
+      border: 1px solid #e5e7eb;
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .acc-body.open { display: block; }
+
+    .service-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background .15s;
+    }
+    .service-row:last-child { border-bottom: none; }
+    .service-row:hover { background: var(--purple-pale); }
+    .service-name {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .service-price {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--purple);
+      white-space: nowrap;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .currency { font-size: .75rem; color: var(--text-light); }
+
+    /* hidden by search */
+    .service-row.hidden { display: none; }
+    .acc-item.all-hidden .acc-header { opacity: .45; pointer-events: none; }
+
+    /* ===== SOCIAL BAR ===== */
+    .social-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .social-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(107,33,168,.2); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 20px;
+      font-size: .82rem;
+      color: var(--text-light);
+      margin-top: 40px;
+    }
+    footer .payment-icons { margin-top: 8px; font-size: 1.4rem; }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand">
+    <img src="images/logo.png" alt="M-14 Logo"/>
+    صالون M-14
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">حجز موعد</a></li>
+    <li><a href="#" class="active">قائمة الأسعار</a></li>
+    <li><a href="#">العروض</a></li>
+    <li><a href="#">الخدمات المنزلية</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="images/logo.png" alt="شعار صالون M-14" class="hero-logo"/>
+  <h1>صالون M-14 للشعر والتجميل</h1>
+  <p>أهلاً وسهلاً بكم في صالون M-14</p>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- MAIN -->
+<div class="page-wrapper">
+
+  <div class="section-title-bar">قائمة الأسعار</div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="بحث عن خدمة..."/>
+    <span class="search-icon">🔍</span>
+  </div>
+
+  <!-- ACCORDION -->
+  <div class="accordion" id="accordion">
+
+    <!-- 1. العناية بالشعر -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>✂️ العناية بالشعر</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">صبغة جذور</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة شعر للكتف</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة شعر للخط</span><span class="service-price">230 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة شعر أسفل الخط</span><span class="service-price">350 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة شعر لمحيط الخصر</span><span class="service-price">500 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">بروتين أو كيراتين للجذور</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">بروتين أو كيراتين للشعر القصير</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">بروتين أو كيراتين للشعر المتوسط للكتف</span><span class="service-price">450 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">بروتين أو كيراتين للشعر الطويل</span><span class="service-price">600 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">بروتين أو كيراتين خط الخصر</span><span class="service-price">800 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">جذور كولاجين</span><span class="service-price">350 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">كولاجين للكتف</span><span class="service-price">600 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">كولاجين للخط</span><span class="service-price">800 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">كولاجين لأسفل الخط</span><span class="service-price">1200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">كولاجين للخصر</span><span class="service-price">1500 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">غسيل الشعر</span><span class="service-price">20 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">قص الشعر 1</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">قص الشعر 2</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">قص الشعر 3</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تجفيف الشعر 1</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تجفيف الشعر 2</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تجفيف الشعر 3</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تجفيف الشعر 4</span><span class="service-price">120 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تجفيف الشعر 5</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">رنساج أو تصفيف مع تجفيف 1</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تصفيف مع تجفيف 2</span><span class="service-price">300 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تصفيف مع تجفيف 3</span><span class="service-price">450 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام كريم 1</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام كريم 2</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام كريم 3</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء للشعر 1</span><span class="service-price">60 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء للشعر 2</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء للشعر 3</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تركيب شعر</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">خصل شعر 1</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">خصل شعر 2</span><span class="service-price">350 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">خصل شعر 3</span><span class="service-price">500 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">خصل شعر 4</span><span class="service-price">750 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">خصل شعر 5</span><span class="service-price">1000 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام زيت شعر 1</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام زيت شعر 2</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فيلر للشعر 1</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فيلر للشعر 2</span><span class="service-price">350 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فيلر للشعر 3</span><span class="service-price">400 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فيلر للشعر 4</span><span class="service-price">500 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تهذيب الشعر أو الغرة</span><span class="service-price">25 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تنظيف فروة الرأس (تنظيف عميق)</span><span class="service-price">500 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 2. علاجات الشعر -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>💆 علاجات الشعر</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">علاج تساقط الشعر</span><span class="service-price">300 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">علاج تقوية الشعر</span><span class="service-price">250 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">علاج قشرة الرأس</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">علاج ترطيب الشعر الجاف</span><span class="service-price">180 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 3. الحواجب -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🪮 الحواجب</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">رسم الحواجب</span><span class="service-price">30 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">هيدروجين الحواجب</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة الحواجب</span><span class="service-price">40 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">لمينيشن الحواجب</span><span class="service-price">120 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 4. العناية بالأظافر -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>💅 العناية بالأظافر</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">مانيكير</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">باديكير</span><span class="service-price">60 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">مانيكير وباديكير مع برافين</span><span class="service-price">160 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">اكستنشن الأظافر عادي</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">رسم الأظافر لكل إصبع</span><span class="service-price">10 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">مانيكير عين القطة للإصبع الواحد</span><span class="service-price">15 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تصميم أومبري للإصبع الواحد</span><span class="service-price">20 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 5. رموش -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>👁️ رموش</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">تركيب رموش كلاسيك</span><span class="service-price">120 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تركيب رموش روسي</span><span class="service-price">180 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">لمينيشن الرموش</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">صبغة الرموش</span><span class="service-price">40 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 6. العناية بالبشرة -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>✨ العناية بالبشرة</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">فيشل لمكافحة الشيخوخة</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تنظيف بشرة أساسي</span><span class="service-price">120 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تنظيف بشرة ذهبي</span><span class="service-price">180 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">علاج تفتيح البشرة</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">علاج حب الشباب</span><span class="service-price">130 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 7. ماكياج -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>💄 ماكياج</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">مكياج نهاري</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">مكياج سهرة</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">مكياج عروس</span><span class="service-price">400 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">مكياج حفلات</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 8. تدليك -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🌿 تدليك</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">تدليك الجسم الكامل لمدة ساعة</span><span class="service-price">200 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك الجسم الكامل لمدة 45 دقيقة</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك الكتفين لمدة 15 دقيقة</span><span class="service-price">75 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك الساق لمدة 15 دقيقة</span><span class="service-price">75 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك الرأس لمدة 15 دقيقة</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك الظهر لمدة 15 دقيقة</span><span class="service-price">75 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك البطن لمدة 15 دقيقة</span><span class="service-price">75 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تدليك اليد لمدة 15 دقيقة</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 9. الحلاوة -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🍯 الحلاوة</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">حلاوة كاملة</span><span class="service-price">80 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حلاوة نصف الجسم</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حلاوة الوجه</span><span class="service-price">25 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حلاوة الإبط</span><span class="service-price">20 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 10. الحناء -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🌸 الحناء</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">حناء لأصابع اليد سبيشل</span><span class="service-price">35 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء اليدين</span><span class="service-price">60 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء القدمين</span><span class="service-price">60 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حناء اليدين والقدمين</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 11. شمع -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🕯️ شمع</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">شمع كامل الجسم</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">شمع الساقين</span><span class="service-price">40 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">شمع الذراعين</span><span class="service-price">35 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">شمع الوجه</span><span class="service-price">25 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">شمع الإبط</span><span class="service-price">20 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 12. فتلة -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🧵 فتلة</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">فتلة الوجه كاملة</span><span class="service-price">30 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فتلة الحواجب</span><span class="service-price">15 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">فتلة الشارب</span><span class="service-price">10 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 13. تشقير -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🌟 تشقير</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">تشقير الأيدي والأرجل</span><span class="service-price">100 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تشقير للساق أو للأيدي</span><span class="service-price">50 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">تشقير الوجه</span><span class="service-price">40 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+    <!-- 14. حمام مغربي -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span>🛁 حمام مغربي</span>
+        <span class="acc-toggle">+</span>
+      </div>
+      <div class="acc-body">
+        <div class="service-row"><span class="service-name">حمام مغربي أساسي</span><span class="service-price">150 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام مغربي مع تدليك</span><span class="service-price">220 <span class="currency">د.إ</span></span></div>
+        <div class="service-row"><span class="service-name">حمام مغربي فاخر</span><span class="service-price">300 <span class="currency">د.إ</span></span></div>
+      </div>
+    </div>
+
+  </div><!-- end accordion -->
+
+  <!-- SOCIAL BAR -->
+  <div class="social-bar">
+    <a href="#" class="social-btn" title="إنستغرام">📸</a>
+    <a href="#" class="social-btn" title="سناب شات">👻</a>
+    <a href="#" class="social-btn" title="تيك توك">🎵</a>
+    <a href="#" class="social-btn" title="واتساب">📱</a>
+    <a href="#" class="social-btn" title="خرائط">📍</a>
+  </div>
+
+</div><!-- end page-wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 جميع الحقوق محفوظة — <strong>صالون M-14 للشعر والتجميل</strong></p>
+  <div class="payment-icons">💳 🏧</div>
+</footer>
+
+<script>
+  // Accordion toggle
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    // close all
+    document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.acc-header').forEach(h => h.classList.remove('open'));
+    if (!isOpen) {
+      body.classList.add('open');
+      header.classList.add('open');
+      header.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Search
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    document.querySelectorAll('.acc-item').forEach(item => {
+      const rows = item.querySelectorAll('.service-row');
+      let anyVisible = false;
+      rows.forEach(row => {
+        const name = row.querySelector('.service-name').textContent.toLowerCase();
+        if (!q || name.includes(q)) {
+          row.classList.remove('hidden');
+          anyVisible = true;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+      item.classList.toggle('all-hidden', !anyVisible);
+      if (q && anyVisible) {
+        item.querySelector('.acc-body').classList.add('open');
+        item.querySelector('.acc-header').classList.add('open');
+      } else if (!q) {
+        item.querySelector('.acc-body').classList.remove('open');
+        item.querySelector('.acc-header').classList.remove('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
